@@ -9,14 +9,11 @@ function ProductCard({ product }: IProps) {
   const { category, colors, description, imageURL, price, title, id } = product;
 
   return (
-    <div
-      key={id}
-      className="max-w-sm md:max-w-lg border rounded-md p-2 flex flex-col justify-between text-center  gap-4   "
-    >
+    <div className="max-w-sm md:max-w-lg  mx-auto md:mx-0  border rounded-md p-2 flex flex-col justify-between text-center  gap-4   ">
       <Image
         imageUrl={imageURL}
         altText={title}
-        className="rounded-md w-80 max-h-64 object-cover"
+        className="rounded-md max-w-lg max-h-64 object-cover"
       />
 
       <h3>{product.title}</h3>
@@ -31,8 +28,8 @@ function ProductCard({ product }: IProps) {
 
         <Image
           className="w-10 h-10 rounded-full object-bottom"
-          imageUrl={imageURL}
-          altText={title}
+          imageUrl={category.imageURL}
+          altText={category.name}
         />
       </div>
       <div className="flex  items-center justify-between space-x-2">
