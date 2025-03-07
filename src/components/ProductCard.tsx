@@ -9,7 +9,10 @@ function ProductCard({ product }: IProps) {
   const { category, colors, description, imageURL, price, title, id } = product;
 
   return (
-    <div className="max-w-sm md:max-w-lg  mx-auto md:mx-0  border rounded-md p-2 flex flex-col justify-between gap-4   ">
+    <div
+      key={id}
+      className="max-w-sm md:max-w-lg  mx-auto md:mx-0  border rounded-md p-2 flex flex-col justify-between gap-4   "
+    >
       <Image
         imageUrl={imageURL}
         altText={title}
@@ -33,8 +36,14 @@ function ProductCard({ product }: IProps) {
         />
       </div>
       <div className="flex  items-center justify-between space-x-2">
-        <Button className="bg-indigo-600 " width="w-full">
-          
+        
+        <Button
+          className="bg-indigo-600 "
+          width="w-full"
+          onClick={() => {
+            alert("hello");
+          }}
+        >
           Edit
         </Button>
         <Button className="bg-red-600  text-center" width="w-full">

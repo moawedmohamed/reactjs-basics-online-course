@@ -8,10 +8,9 @@ interface IProps {
   title?: string;
   children: ReactNode;
 }
-const Model = ({ isOpen, closeModel, title,children }: IProps) => {
+const Model = ({ isOpen, closeModel, title, children }: IProps) => {
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center"></div>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModel}>
