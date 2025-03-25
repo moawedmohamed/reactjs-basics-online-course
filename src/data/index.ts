@@ -152,6 +152,7 @@ export const formInputsList: IFormInput[] = [
     name: "title",
     label: "Product Title",
     type: "text",
+    input: undefined
   },
   {
     id: "description",
@@ -164,12 +165,14 @@ export const formInputsList: IFormInput[] = [
     name: "imageURL",
     label: "Product Image URL",
     type: "text",
+    input: undefined
   },
   {
     id: "price",
     name: "price",
     label: "Product Price",
     type: "text",
+    input: undefined
   },
 ];
 

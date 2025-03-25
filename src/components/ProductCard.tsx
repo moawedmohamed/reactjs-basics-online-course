@@ -2,11 +2,32 @@ import { IProduct } from "../interfaces";
 import Image from "./Image";
 import { textSlicer } from "../utils/functions";
 import Button from "./ui/Button";
+import CircleColor from "./CircleColor";
+import { useState } from "react";
 export interface IProps {
   product: IProduct;
+  setProductEdit: (product: IProduct) => void;
+  index: number;
+  openEditModal: () => void;
+  setProductEditIndex: (value: number) => void;
 }
-function ProductCard({ product }: IProps) {
+function ProductCard({
+  product,
+  setProductEdit,
+  openEditModal,
+  setProductEditIndex,
+  index,
+}: IProps) {
   const { category, colors, description, imageURL, price, title, id } = product;
+  const renderColors = colors.map((color) => (
+    <CircleColor key={color} color={color} />
+  ));
+  const onEdit = () => {
+    setProductEdit(product); // تحديث بيانات المنتج
+    openEditModal(); // فتح نافذة التعديل
+    setProductEditIndex(index);
+  };
+  // console.log(product);
 
   return (
     <div
@@ -21,11 +42,7 @@ function ProductCard({ product }: IProps) {
 
       <h3>{product.title}</h3>
       <p>{textSlicer(description)}</p>
-      <div className="flex items-center my-4  space-x-2">
-        <span className="w-5 h-5 bg-indigo-600 rounded-full cursor-pointer " />
-        <span className="w-5 h-5 bg-yellow-600 rounded-full cursor-pointer" />
-        <span className="w-5 h-5 bg-red-800 rounded-full  cursor-pointer" />
-      </div>
+      <div className="flex items-center my-4  space-x-2">{renderColors}</div>
       <div className="flex  items-center justify-between">
         <span>{`${price}$`}</span>
 
@@ -36,14 +53,7 @@ function ProductCard({ product }: IProps) {
         />
       </div>
       <div className="flex  items-center justify-between space-x-2">
-        
-        <Button
-          className="bg-indigo-600 "
-          width="w-full"
-          onClick={() => {
-            alert("hello");
-          }}
-        >
+        <Button className="bg-indigo-600 " width="w-full" onClick={onEdit}>
           Edit
         </Button>
         <Button className="bg-red-600  text-center" width="w-full">
